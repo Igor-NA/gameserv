@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf9dc97e-fd5e-4a91-a434-45b3c55dd861" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/org/morglen/intuit/gameserver/model/PageGenerator.class" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/morglen/intuit/gameserver/Runner.class" afterPath="$PROJECT_DIR$/target/classes/org/morglen/intuit/gameserver/Runner.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/morglen/intuit/gameserver/control/AppServerController.class" afterPath="$PROJECT_DIR$/target/classes/org/morglen/intuit/gameserver/control/AppServerController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/morglen/intuit/gameserver/external/appserv/JetHandler.class" afterPath="$PROJECT_DIR$/target/classes/org/morglen/intuit/gameserver/external/appserv/JetHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/morglen/intuit/gameserver/external/servlet/JetServlet.class" afterPath="$PROJECT_DIR$/target/classes/org/morglen/intuit/gameserver/external/servlet/JetServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/morglen/intuit/gameserver/control/AppServerController.java" afterPath="$PROJECT_DIR$/src/main/java/org/morglen/intuit/gameserver/control/AppServerController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/morglen/intuit/gameserver/external/appserv/JetHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/morglen/intuit/gameserver/external/appserv/JetHandler.java" />
@@ -1069,12 +1074,12 @@
       <updated>1475659061716</updated>
       <workItem from="1475659067071" duration="21601000" />
       <workItem from="1476304950108" duration="1291000" />
-      <workItem from="1476647086133" duration="4841000" />
+      <workItem from="1476647086133" duration="4874000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27733000" />
+    <option name="totallyTimeSpent" value="27766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="69" y="-9" width="1860" height="1098" extended-state="6" />
