@@ -1,5 +1,7 @@
 package org.morglen.intuit.gameserver.external.servlet;
 
+import org.morglen.intuit.gameserver.model.PageGenerator;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,18 +13,23 @@ import java.io.PrintWriter;
  * Created by SEkaterina on 05.10.2016.
  */
 public class JetServlet extends HttpServlet {
+
+    private PageGenerator pageGenerator = new PageGenerator();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        resp.setContentType("text/html;charset=utf-8");
-        resp.setStatus(HttpServletResponse.SC_OK);
+        getPageGenerator().drowe(resp);
 
-        PrintWriter printWriter = resp.getWriter();
+    }
 
-        printWriter.println("<h1>Hello servlet!</h1>");
+    protected PageGenerator getPageGenerator() {
+        return pageGenerator;
+    }
 
-
+    protected void setPageGenerator(PageGenerator pageGenerator) {
+        this.pageGenerator = pageGenerator;
     }
 
 }

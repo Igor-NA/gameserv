@@ -2,6 +2,7 @@ package org.morglen.intuit.gameserver.external.appserv;
 
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.morglen.intuit.gameserver.model.PageGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,13 +14,20 @@ import java.io.IOException;
  */
 public class JetHandler extends AbstractHandler {
 
+
+    private PageGenerator pageGenerator = new PageGenerator();
+
     @Override
     protected void doHandle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setIntHeader("Refresh", 1);
-        response.setContentType("text/html;charset=utf-8");
-        response.setStatus(HttpServletResponse.SC_OK);
-        baseRequest.setHandled(true);
-        response.getWriter().println("<h1>Hello, server!</h1>");
+        baseRequest.setHandled(getPageGenerator().drowe(response));
     }
 
+
+    protected PageGenerator getPageGenerator() {
+        return pageGenerator;
+    }
+
+    protected void setPageGenerator(PageGenerator pageGenerator) {
+        this.pageGenerator = pageGenerator;
+    }
 }

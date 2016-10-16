@@ -19,7 +19,7 @@ public class AppServerController {
 
     private AppServerController(){
         setHandler(new JetHandler());
-        setJetServer(new JetServer(DEFAULT_PORT, handler));
+        setJetServer(new JetServer(DEFAULT_PORT, getHandler()));
     }
 
     public static synchronized AppServerController getInstance() {

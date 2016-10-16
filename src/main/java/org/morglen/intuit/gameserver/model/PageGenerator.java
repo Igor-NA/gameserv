@@ -1,79 +1,75 @@
 package org.morglen.intuit.gameserver.model;
 
 
+import org.eclipse.jetty.server.Response;
+
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Objects;
+import java.io.PrintWriter;
+
 
 /**
  * Created by SEkaterina on 05.10.2016.
  */
-public class PageGenerator implements Appendable, CharSequence {
+public class PageGenerator {
 
-    private StringBuilder builder;
-    static final Integer DEFAULTSIZE = 16;
+    private StringBuffer stringBuffer;
+
+    private Boolean configure = false;
+
+    public PageGenerator(Integer length){
+        stringBuffer = length > 0 ? new StringBuffer(length) : new StringBuffer();
+
+    }
 
     public PageGenerator() {
-        this(DEFAULTSIZE);
+        this(0);
     }
 
-    public PageGenerator(Integer size) {
-        setBuilder(new StringBuilder(size));
+    private void configure() {
+        stringBuffer.append("<h1>Hello, server!</h1>");
+        setConfigure(true);
     }
 
+    public void append(CharSequence charSequence) {
+        if(charSequence.length() < 0)
+            return;
 
-    public StringBuilder getBuilder() {
-        return builder;
+        if(!isConfigure())
+            setConfigure(true);
+
+        stringBuffer.append(charSequence);
     }
 
-    protected void setBuilder(StringBuilder builder) {
-        this.builder = builder;
+    public boolean drowe(HttpServletResponse response) throws IOException {
+        if(!configure)
+            configure();
+
+        response.setIntHeader("Refresh", 1);
+        response.setContentType("text/html;charset=utf-8");
+        response.setStatus(HttpServletResponse.SC_OK);
+        return !writeResponse(response.getWriter());
     }
 
-    public Appendable append(CharSequence csq) throws IOException {
-        builder.append(csq);
-        return this;
+    private boolean writeResponse(PrintWriter printWriter) {
+        printWriter.write(getStringBuffer().toString());
+
+        return printWriter.checkError();
     }
 
-    public Appendable append(CharSequence csq, int start, int end) throws IOException {
-        builder.append(csq, start, end);
-        return this;
+    protected StringBuffer getStringBuffer() {
+        return stringBuffer;
     }
 
-    public Appendable append(char c) throws IOException {
-        builder.append(c);
-        return this;
+    protected void setStringBuffer(StringBuffer stringBuffer) {
+        this.stringBuffer = stringBuffer;
     }
 
-
-    public int length() {
-        return builder.length();
+    public Boolean isConfigure() {
+        return configure;
     }
 
-    public char charAt(int index) {
-        return builder.charAt(index);
-    }
-
-    public CharSequence subSequence(int start, int end) {
-        return builder.subSequence(start, end);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o.getClass() != PageGenerator.class)) return false;
-        PageGenerator that = (PageGenerator) o;
-        return Objects.equals(getBuilder(), that.getBuilder());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getBuilder());
-    }
-
-    @Override
-    public String toString() {
-        return this.getClass().getSimpleName() + "[" +
-                "builder=" + builder +
-                ']';
+    protected void setConfigure(Boolean configure) {
+        this.configure = configure;
     }
 }
