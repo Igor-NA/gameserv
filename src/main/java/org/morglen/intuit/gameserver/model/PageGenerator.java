@@ -27,6 +27,7 @@ public class PageGenerator {
     }
 
     private void configure() {
+        stringBuffer.append("<form action=\"/helloServlet\" method=\"post\"");
         stringBuffer.append("<h1>Hello, server!</h1>");
         setConfigure(true);
     }
